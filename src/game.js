@@ -344,6 +344,7 @@ class GameEngine {
   renderReveal() {
     launchCelebration();
     sound.playChime();
+    sound.playBgm();
 
     this.container.innerHTML = `
       <div class="art-card">
