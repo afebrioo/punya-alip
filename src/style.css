@@ -1,0 +1,747 @@
+/* ==========================================================================
+   STYLE ART MURNI: PANTAI JIMBARAN & SURAT SAMUDRA UNTUK RARA
+   (Clean Illustrated Storybook / Retro Coastal Postcard Style - No Glassmorphism)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+:root {
+  /* Coastal Art Palette */
+  --ink: #1a2f3b;               /* Deep navy ink outline */
+  --ink-light: #446375;         /* Muted blue ink */
+  --sand-cream: #fffdf7;        /* Clean postcard paper / parchment */
+  --sand-warm: #faedcd;         /* Warm sandy beach */
+  --ocean-deep: #16425b;        /* Deep ocean water */
+  --ocean-mid: #2f7490;         /* Mid sea waves */
+  --ocean-foam: #8ecae6;        /* Seafoam turquoise */
+  --matcha: #606c38;            /* Matcha green accent */
+  --matcha-light: #dda15e;
+  --sunset-coral: #e76f51;      /* Warm sunset coral */
+  --sunset-gold: #f4a261;       /* Golden sunset */
+  --paper-shadow: 4px 5px 0px var(--ink); /* Retro art shadow */
+  --paper-shadow-hover: 6px 7px 0px var(--ink);
+  --paper-shadow-active: 1px 2px 0px var(--ink);
+  --radius-card: 22px;
+  --radius-btn: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--ink);
+  background: linear-gradient(180deg, #fceade 0%, #fad2b8 35%, #a8dadc 70%, #457b9d 100%);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background Illustrated Sky & Sun */
+.coastal-sky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.sun-illustration {
+  position: absolute;
+  top: 40px;
+  right: calc(50% - 240px);
+  width: 110px;
+  height: 110px;
+  background: radial-gradient(circle, #ffe3a8 0%, #f4a261 70%, transparent 75%);
+  border-radius: 50%;
+  opacity: 0.85;
+  filter: blur(1px);
+}
+
+@media (max-width: 600px) {
+  .sun-illustration {
+    right: 20px;
+    top: 25px;
+    width: 85px;
+    height: 85px;
+  }
+}
+
+/* Floating Sea Gull / Clouds Art */
+.seagull {
+  position: absolute;
+  width: 28px;
+  height: 14px;
+  border-top: 3px solid rgba(26, 47, 59, 0.4);
+  border-radius: 50% 50% 0 0;
+  transform: rotate(-10deg);
+}
+.gull-1 { top: 75px; left: 15%; animation: floatGull 9s ease-in-out infinite alternate; }
+.gull-2 { top: 110px; left: 22%; transform: scale(0.7) rotate(-5deg); animation: floatGull 12s ease-in-out infinite alternate 2s; }
+
+@keyframes floatGull {
+  0% { transform: translate(0, 0) rotate(-10deg); }
+  100% { transform: translate(18px, -8px) rotate(-4deg); }
+}
+
+/* Top Floating Header & Audio Bar */
+.top-nav {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 460px;
+  padding: 16px 20px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--sand-cream);
+  border: 2px solid var(--ink);
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+  box-shadow: 2px 3px 0px var(--ink);
+  letter-spacing: 0.5px;
+}
+
+.audio-control-btn {
+  background: var(--sand-cream);
+  border: 2px solid var(--ink);
+  padding: 6px 12px;
+  border-radius: 30px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink);
+  box-shadow: 2px 3px 0px var(--ink);
+  transition: all 0.15s ease;
+}
+
+.audio-control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 4px 0px var(--ink);
+}
+
+.audio-control-btn:active {
+  transform: translateY(2px);
+  box-shadow: 1px 1px 0px var(--ink);
+}
+
+/* Main Container (Responsive Mobile-First Frame) */
+.main-wrapper {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 440px;
+  padding: 8px 16px 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Storybook Art Card (Pure Art, No Blur) */
+.art-card {
+  background: var(--sand-cream);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-card);
+  box-shadow: var(--paper-shadow);
+  padding: 24px 20px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Card Decorative Stamps / Pins */
+.art-card::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 32px;
+  height: 38px;
+  border: 2px dashed #d4a373;
+  border-radius: 4px;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+/* Progress Step Indicator */
+.step-tracker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.step-dot {
+  width: 28px;
+  height: 8px;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: #e9ecef;
+  transition: all 0.25s ease;
+}
+
+.step-dot.active {
+  background: var(--sunset-coral);
+  width: 38px;
+}
+
+.step-dot.completed {
+  background: var(--matcha);
+}
+
+/* Letter Bag (Collected Letters Bar) */
+.letters-banner {
+  background: #fdf0d5;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.letters-slots {
+  display: flex;
+  gap: 6px;
+}
+
+.letter-slot {
+  width: 26px;
+  height: 28px;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--sunset-coral);
+  box-shadow: 1px 2px 0px var(--ink);
+}
+
+.letter-slot.empty {
+  color: #adb5bd;
+  border-style: dashed;
+  box-shadow: none;
+  background: #f8f9fa;
+}
+
+/* Scene Illustration Area */
+.scene-art {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.scene-icon-bubble {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 12px;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: #faedcd;
+  box-shadow: 3px 3px 0px var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  animation: gentleBob 3s ease-in-out infinite alternate;
+}
+
+@keyframes gentleBob {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-6px) rotate(2deg); }
+}
+
+.scene-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.scene-desc {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #3d5a80;
+  margin-bottom: 16px;
+}
+
+/* Puzzle Question Box */
+.puzzle-box {
+  background: #ffffff;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  padding: 16px 14px;
+  box-shadow: 2px 3px 0px var(--ink);
+  margin-bottom: 18px;
+}
+
+.puzzle-question {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+
+/* Choice Buttons */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.choice-btn {
+  background: #f8f9fa;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--ink);
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.choice-btn:hover {
+  background: #f1f3f5;
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0px var(--ink);
+}
+
+.choice-btn:active {
+  transform: translateY(2px);
+  box-shadow: 1px 1px 0px var(--ink);
+}
+
+.choice-btn.correct {
+  background: #d8f3dc;
+  border-color: #2d6a4f;
+  color: #1b4332;
+  font-weight: 700;
+}
+
+.choice-btn.wrong {
+  background: #ffe3e0;
+  border-color: #c9184a;
+  color: #800f2f;
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* Pair Select Grid (Food & Drinks) */
+.pair-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.pair-card {
+  background: #ffffff;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--ink);
+  transition: all 0.15s ease;
+}
+
+.pair-card .icon {
+  font-size: 1.9rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.pair-card .label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.pair-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0px var(--ink);
+}
+
+.pair-card.selected {
+  background: #faedcd;
+  border-color: var(--sunset-coral);
+  box-shadow: 3px 3px 0px var(--sunset-coral);
+  transform: translateY(-2px);
+}
+
+.pair-card.matched {
+  background: #d8f3dc;
+  border-color: #2d6a4f;
+}
+
+/* Scramble Word Slot System */
+.scramble-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 14px;
+  min-height: 44px;
+}
+
+.word-box-slot {
+  width: 32px;
+  height: 38px;
+  border: 2px dashed var(--ink);
+  border-radius: 8px;
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+.word-box-slot.filled {
+  border-style: solid;
+  background: #fff3b0;
+  box-shadow: 2px 2px 0px var(--ink);
+}
+
+.scramble-letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+
+.letter-tile {
+  width: 36px;
+  height: 38px;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--ink);
+  transition: all 0.12s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.letter-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0px var(--ink);
+  background: #fdf0d5;
+}
+
+.letter-tile:active {
+  transform: translateY(2px);
+  box-shadow: 1px 1px 0px var(--ink);
+}
+
+.letter-tile.used {
+  opacity: 0.35;
+  pointer-events: none;
+  background: #e9ecef;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Feedback Box */
+.feedback-msg {
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  margin-top: 12px;
+  display: none;
+  border: 2px solid transparent;
+}
+
+.feedback-msg.show {
+  display: block;
+}
+
+.feedback-msg.info {
+  background: #e0f2fe;
+  color: #0369a1;
+  border-color: #0284c7;
+}
+
+.feedback-msg.success {
+  background: #dcfce7;
+  color: #15803d;
+  border-color: #22c55e;
+}
+
+.feedback-msg.error {
+  background: #fee2e2;
+  color: #b91c1c;
+  border-color: #ef4444;
+}
+
+/* Primary Action Buttons */
+.btn-primary {
+  width: 100%;
+  background: var(--sunset-coral);
+  color: #ffffff;
+  border: 2.5px solid var(--ink);
+  border-radius: var(--radius-btn);
+  padding: 14px 20px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--paper-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+  background: #f26444;
+  transform: translateY(-2px);
+  box-shadow: var(--paper-shadow-hover);
+}
+
+.btn-primary:active {
+  transform: translateY(3px);
+  box-shadow: var(--paper-shadow-active);
+}
+
+.btn-secondary {
+  width: 100%;
+  background: #ffffff;
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-btn);
+  padding: 10px 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--ink);
+  transition: all 0.15s ease;
+  margin-top: 8px;
+}
+
+.btn-secondary:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   FINAL STAGE: PETI HARTA KARUN & REVEAL "cwtch"
+   ========================================================================== */
+.chest-container {
+  text-align: center;
+  padding: 10px 0 16px;
+}
+
+.chest-box-art {
+  width: 120px;
+  height: 100px;
+  margin: 0 auto 16px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.chest-box-art:hover {
+  transform: scale(1.05);
+}
+
+.chest-box-art.shake {
+  animation: chestRattle 0.5s ease-in-out infinite;
+}
+
+@keyframes chestRattle {
+  0%, 100% { transform: rotate(0deg) scale(1.05); }
+  25% { transform: rotate(-5deg) scale(1.05); }
+  75% { transform: rotate(5deg) scale(1.05); }
+}
+
+/* Final Reveal Card ("cwtch") */
+.reveal-wrapper {
+  text-align: center;
+  padding: 10px 4px;
+}
+
+.reveal-heading {
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--sunset-coral);
+  margin-bottom: 8px;
+}
+
+.cwtch-display {
+  display: inline-block;
+  background: #faedcd;
+  border: 3.5px solid var(--ink);
+  border-radius: 20px;
+  padding: 16px 28px;
+  box-shadow: 5px 6px 0px var(--ink);
+  margin: 12px 0 16px;
+  animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.cwtch-word {
+  font-family: 'Outfit', sans-serif;
+  font-size: 3.4rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: var(--ocean-deep);
+  line-height: 1;
+  text-shadow: 2px 2px 0px #ffe3a8;
+}
+
+.music-playing-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 2px solid var(--ink);
+  border-radius: 30px;
+  padding: 8px 16px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--ink);
+  box-shadow: 2px 3px 0px var(--ink);
+  margin-top: 14px;
+}
+
+.sound-wave-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+}
+
+.sound-bar {
+  width: 3px;
+  background: var(--sunset-coral);
+  border-radius: 2px;
+  animation: soundJump 1s ease-in-out infinite alternate;
+}
+
+.sound-bar:nth-child(1) { height: 6px; animation-delay: 0.1s; }
+.sound-bar:nth-child(2) { height: 14px; animation-delay: 0.3s; }
+.sound-bar:nth-child(3) { height: 10px; animation-delay: 0.2s; }
+.sound-bar:nth-child(4) { height: 15px; animation-delay: 0.4s; }
+
+@keyframes soundJump {
+  0% { height: 4px; }
+  100% { height: 16px; }
+}
+
+/* ==========================================================================
+   BOTTOM ILLUSTRATED OCEAN WAVES (Pure Vector Art, Layered)
+   ========================================================================== */
+.ocean-waves-container {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 2;
+  margin-top: auto;
+}
+
+.waves-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  animation: waveRoll 14s linear infinite;
+}
+
+.waves-svg.back {
+  opacity: 0.6;
+  animation: waveRoll 20s linear infinite reverse;
+}
+
+@keyframes waveRoll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   DESKTOP OPTIMIZATIONS
+   ========================================================================== */
+@media (min-width: 641px) {
+  .main-wrapper {
+    max-width: 460px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+
+  .art-card {
+    padding: 28px 24px;
+    border-width: 3.5px;
+    box-shadow: 6px 7px 0px var(--ink);
+  }
+
+  .cwtch-word {
+    font-size: 3.8rem;
+  }
+}
+
