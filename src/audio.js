@@ -22,9 +22,13 @@ class SoundManager {
   init(bgmUrl = "") {
     this.bgmUrl = bgmUrl;
     if (bgmUrl) {
-      this.bgmAudio = new Audio(bgmUrl);
-      this.bgmAudio.loop = true;
-      this.bgmAudio.volume = 0.7;
+      try {
+        this.bgmAudio = new Audio(encodeURI(bgmUrl));
+        this.bgmAudio.loop = true;
+        this.bgmAudio.volume = 0.65;
+      } catch (e) {
+        console.warn("Gagal inisialisasi audio BGM:", e);
+      }
     }
   }
 
@@ -168,9 +172,9 @@ class SoundManager {
     if (this.bgmAudio) {
       this.bgmAudio.pause();
     }
-    this.bgmAudio = new Audio(url);
+    this.bgmAudio = new Audio(encodeURI(url));
     this.bgmAudio.loop = true;
-    this.bgmAudio.volume = 0.7;
+    this.bgmAudio.volume = 0.65;
     if (!this.isMuted) {
       this.bgmAudio.play().catch(() => {});
       this.isBgmPlaying = true;

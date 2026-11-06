@@ -12,9 +12,9 @@ export const gameConfig = {
 
   // Pengaturan BGM Audio
   bgm: {
-    audioUrl: "", // Isi dengan file kustom (misal "bgm.mp3") saat Alip sudah ada lagunya
-    title: "Lagu Kita",
-    artist: "Alip untuk Rara"
+    audioUrl: "Justin Timberlake - Mirrors (Lyrics).mp3",
+    title: "Justin Timberlake - Mirrors",
+    artist: "Untuk Rara"
   },
 
   // 14 Pertanyaan & Jawaban dari Alip
